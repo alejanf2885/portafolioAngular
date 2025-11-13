@@ -24,8 +24,5 @@
   /* Aplica la animación */
   animation: lava-pulse 2s infinite ease-in-out; /* 2s de duración, se repite infinitamente, con una curva de velocidad suave */
 
-  /* Opcional: Estilos base que no cambian en la animación */
-  width: 6px; /* Ejemplo de tamaño base */
-  height: 6px; /* Ejemplo de tamaño base */
-  display: inline-block; /* Para que funcione la transformación si es un `div` */
+  
 }

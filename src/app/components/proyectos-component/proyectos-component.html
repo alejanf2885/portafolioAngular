@@ -1,1 +1,11 @@
-<p>proyectos-component works!</p>
+<div class="dark:bg-[#090b0f] min-h-screen py-16 px-4 sm:px-6 lg:px-12">
+  <section id="Projects" class="max-w-7xl mx-auto">
+    <h1 class="text-4xl font-bold mb-8 text-center text-gray-900 dark:text-white">
+      Proyectos
+    </h1>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      @for (proyecto of proyectos; track $index) {
+        <card-proyecto [project]="proyecto"></card-proyecto>
+      }
+    </div>
+  </section>

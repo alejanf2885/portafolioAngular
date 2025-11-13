@@ -9,9 +9,10 @@ import Seccion from '../../models/Seccion';
 })
 export class NavigationComponent implements AfterViewInit, OnDestroy {
   secciones: Array<Seccion> = [
-    new Seccion('Home', '/home', true),
-    new Seccion('About', '/about', false),
+    new Seccion('Home', '/home', false),
     new Seccion('Projects', '/projects', false),
+    new Seccion('About', '/about', false),
+    
     new Seccion('Contact', '/contact', false),
   ];
 
@@ -30,27 +31,48 @@ export class NavigationComponent implements AfterViewInit, OnDestroy {
 
   //Calcular la seccion activa
   ngAfterViewInit(): void {
-    const sections = document.querySelectorAll('section[id]');
+    // Usar setTimeout para asegurar que todos los componentes estén renderizados
+    setTimeout(() => {
+      const sections = document.querySelectorAll('section[id]');
+      
+      if (sections.length === 0) {
+        console.warn('No se encontraron secciones con id');
+        return;
+      }
 
-    this.observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const id = entry.target.id;
+      this.observer = new IntersectionObserver(
+        (entries) => {
+          // Encontrar la sección que está más visible
+          let mostVisibleEntry: any = null;
+          let maxRatio = 0;
 
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && entry.intersectionRatio > maxRatio) {
+              maxRatio = entry.intersectionRatio;
+              mostVisibleEntry = entry;
+            }
+          });
+
+          // Si hay una sección visible, activarla
+          if (mostVisibleEntry && mostVisibleEntry.target) {
+            const id = mostVisibleEntry.target.id;
+            
             // Actualizamos el array de secciones
             this.secciones.forEach((seccion) => {
               seccion.activa = seccion.nombre === id;
             });
           }
-        });
-      },
-      { threshold: 0.5 }
-    );
+        },
+        { 
+          threshold: [0, 0.25, 0.5, 0.75, 1],
+          rootMargin: '-20% 0px -20% 0px' // Solo activar cuando esté en el centro de la pantalla
+        }
+      );
 
-    sections.forEach((section) => {
-      this.observer.observe(section);
-    });
+      sections.forEach((section) => {
+        this.observer.observe(section);
+      });
+    }, 100);
   }
 
   ngOnDestroy(): void {
