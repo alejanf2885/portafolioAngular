@@ -1,0 +1,31 @@
+/* 1. Definición de la animación pulsante */
+@keyframes lava-pulse {
+  0% {
+    /* Estado inicial: un poco más pequeño, brillo estándar */
+    transform: scale(1);
+    box-shadow: 0 0 8px 3px rgba(0, 191, 255, 0.7); /* Brillo azul con opacidad */
+  }
+  50% {
+    /* Punto medio: más grande y con brillo máximo (el "pulso") */
+    transform: scale(1.35); /* Un poco más grande para el efecto "lava" */
+    box-shadow: 0 0 15px 6px #00bfff; /* Brillo más intenso y más amplio */
+  }
+  100% {
+    /* Vuelve al estado inicial */
+    transform: scale(1);
+    box-shadow: 0 0 8px 3px rgba(0, 191, 255, 0.7);
+  }
+}
+
+/* 2. Aplicación a la clase */
+.dot-active {
+  background-color: #00bfff; /* Color de fondo base (el azul) */
+  border-radius: 50%; /* Asegúrate de que sea un círculo */
+  /* Aplica la animación */
+  animation: lava-pulse 2s infinite ease-in-out; /* 2s de duración, se repite infinitamente, con una curva de velocidad suave */
+
+  /* Opcional: Estilos base que no cambian en la animación */
+  width: 6px; /* Ejemplo de tamaño base */
+  height: 6px; /* Ejemplo de tamaño base */
+  display: inline-block; /* Para que funcione la transformación si es un `div` */
+}

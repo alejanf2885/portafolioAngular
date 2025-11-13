@@ -1,0 +1,60 @@
+<div class="bg-[#090b0f] w-24 h-screen border-r border-gray-700/30 fixed top-0 left-0 z-50">
+  <section class="flex flex-col justify-between items-center py-8 h-full">
+    <!-- Logo -->
+    <div class="logo text-2xl font-bold hover:scale-110 transition-transform hover:cursor-pointer">
+      <span class="text-blue-300">&lt;/</span>
+      <span class="text-[#e5e5de]">&gt;</span>
+    </div>
+
+    <!-- Secciones -->
+    <div class="secciones flex flex-col items-center space-y-6">
+      @for (seccion of secciones; track $index) {
+      <div>
+        <span
+          class="block w-1 h-1 rounded-full bg-white transition-all duration-300"
+          [class.dot-active]="seccion.activa"
+        ></span>
+      </div>
+      }
+    </div>
+
+    <div class="mb-4 flex flex-col items-center space-y-6">
+      <!-- Modo Oscuro/claro -->
+      <button
+        (click)="toggleDarkMode()"
+        class="text-white hover:bg-blue-400 px-1 py-1 rounded transition-colors hover:cursor-pointer"
+      >
+        <lucide-icon [name]="isDarkMode ? 'sun' : 'moon'"></lucide-icon>
+      </button>
+
+      <!-- LinkedIn Icon -->
+      <a
+        href="https://www.linkedin.com/in/alejandro-gomez-fernandez/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-white hover:text-blue-400 transition-colors hover:cursor-pointer"
+      >
+        <lucide-icon name="linkedin"></lucide-icon>
+      </a>
+
+      <!-- GitHub Icon -->
+      <a
+        href="https://github.com/alejandro-gomez-fernandez"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-white hover:text-blue-300 transition-colors"
+      >
+        <lucide-icon name="github"></lucide-icon>
+      </a>
+      <!-- Email Icon -->
+      <a
+        href="mailto:alejandro@example.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-white hover:text-blue-400 transition-colors"
+      >
+        <lucide-icon name="mail"></lucide-icon>
+      </a>
+    </div>
+  </section>
+</div>
