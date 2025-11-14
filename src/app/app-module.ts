@@ -8,6 +8,8 @@ import { LucideAngularModule, Linkedin , Sun, Moon, Github, Mail , Link } from '
 import { InicioComponent } from './components/inicio-component/inicio-component';
 import { ProyectosComponent } from './components/proyectos-component/proyectos-component';
 import { ProyectoComponent } from './components/card/proyecto-component/proyecto-component';
+import { ContactComponent } from './components/contact-component/contact-component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -17,9 +19,11 @@ import { ProyectoComponent } from './components/card/proyecto-component/proyecto
     NavigationComponent,
     InicioComponent,
     ProyectosComponent,
-    ProyectoComponent
+    ProyectoComponent,
+    ContactComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     LucideAngularModule.pick({Linkedin , Sun, Moon, Github, Mail , Link})

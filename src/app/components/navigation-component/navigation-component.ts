@@ -11,8 +11,6 @@ export class NavigationComponent implements AfterViewInit, OnDestroy {
   secciones: Array<Seccion> = [
     new Seccion('Home', '/home', false),
     new Seccion('Projects', '/projects', false),
-    new Seccion('About', '/about', false),
-    
     new Seccion('Contact', '/contact', false),
   ];
 

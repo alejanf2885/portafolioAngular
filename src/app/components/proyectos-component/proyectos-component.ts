@@ -16,7 +16,14 @@ export class ProyectosComponent {
       'assets/images/TitanazoLuismi.png',
       'https://www.titanazoibffpro-luismi.com/',
       ['React', 'Tailwind', 'TypeScript']
-    )
+    ),
+    new Proyecto(
+      'Portafolio Personal',
+      'Mi portafolio personal, donde presento mis proyectos, habilidades y experiencia como desarrollador web.',
+      'assets/images/portafolio.png',
+      'https://luismigueldev.github.io/portafolio-personal/',
+      ['Angular', 'Tailwind', 'TypeScript']
+    ),
   ];
 
 }
